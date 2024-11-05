@@ -48,7 +48,6 @@ def NbElmt(L):
 def MakeMhs(nim, nama, kelas, nilai):
     return (nim, nama, kelas, nilai)
 
-
 def SetMhs(set_mhs, new_mhs):
     if IsEmpty(set_mhs):
         return [new_mhs]  
@@ -56,9 +55,6 @@ def SetMhs(set_mhs, new_mhs):
         return set_mhs  
     else:
         return Konso(FirstElmt(set_mhs), SetMhs(Tail(set_mhs), new_mhs))
-
-
-
 
 def SiswaLolos(set_mhs):
     if IsEmpty(set_mhs):
