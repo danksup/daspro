@@ -72,3 +72,4 @@ def TidakMengerjakanQuiz(set_mhs, kelas):
 
     
 print(TidakMengerjakanQuiz(set_mhs, 'C'))
+#test rayyan
