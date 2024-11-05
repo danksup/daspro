@@ -81,8 +81,6 @@ def NilaiTertinggi(set_mhs):
         else:
             return max(MaxElmt(get_nilai(FirstElmt(set_mhs))), NilaiTertinggi(Tail(set_mhs)))
 
-
-
 def SiswaNilaiTertinggi(set_mhs, kelas):
     if IsEmpty(set_mhs):
         return None
@@ -94,7 +92,6 @@ def SiswaNilaiTertinggi(set_mhs, kelas):
                 return SiswaNilaiTertinggi(Tail(set_mhs), kelas)
         else:
             return SiswaNilaiTertinggi(Tail(set_mhs), kelas)
-
 
 def JumlahLulus(set_mhs):
     if IsEmpty(set_mhs):
