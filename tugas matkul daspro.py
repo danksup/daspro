@@ -38,6 +38,18 @@ mhs3 = MakeMhs('123', 'Budi', 'B', [85, 75, 95])
 
 set_mhs = []
 
+# MakeMhs: <string, string, character, list of integer> -> Mhs 
+
+#   {MakeMhs(nim, nama, kelas, nilai) membentuk sebuah mahasiswa 
+#   dengan dengan nim, nama, kelas dan nilai berbentuk list of integer. 
+
+#   Contoh: 
+#   MakeMhs(‘234’, ‘Andi’, ‘C’, []) membentuk mahasiswa dengan nim ‘234’,nama ‘Andi’ dari kelas C, 
+#   dan belum pernah mengerjakan kuis (nilainya berupa list kosong).
+
+#   MakeMhs(‘123’, ‘Caca’, ‘C’, [90,80,100]) membentuk mahasiswa dengan 
+#   nim ‘123’, nama ‘CC’ dari kelas C, dan telah mengerjakan kuis sebanyak tiga kali 
+#   dengan nilai masing-masing adalah 90, 80, dan 100. }
 
 def SetMhs(set_mhs, new_mhs):
     if IsEmpty(set_mhs):
