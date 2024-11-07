@@ -51,7 +51,7 @@ def Head(L):
     return L[:-1]
 
 # get_nim: List -> String
-# get_nim(mhs) mengembalikan nim dari list data mahasiswa
+# get_nim(mhs) mengembalikan nim (ID mahasiswa) dari list data mahasiswa
 # Realisasi
 def get_nim(mhs):
     return mhs[0]
@@ -140,14 +140,14 @@ def MahasiswaTidakMengerjakan(SetL, kelas):
     if IsEmpty(SetL):
         return []
     elif get_kelas(FirstElmt(SetL)) == kelas:
-        if get_nilai(FirstElmt(SetL)) == []:
+        if IsEmpty(get_nilai(FirstElmt(SetL))):
             return Konso(FirstElmt(SetL), MahasiswaTidakMengerjakan(Tail(SetL), kelas))
         else:
             return MahasiswaTidakMengerjakan(Tail(SetL), kelas)
     else:
         return MahasiswaTidakMengerjakan(Tail(SetL), kelas)
 
-# NilaiTertinggi: List of list -> Integer
+# func: List of list -> Integer
 # NilaiTertinggi(SetL) mengembalikan nilai tertinggi dari semua mahasiswa dalam list
 # Realisasi
 def NilaiTertinggi(SetL):
@@ -156,7 +156,7 @@ def NilaiTertinggi(SetL):
     else:
         return max(MaxElmt(get_nilai(FirstElmt(SetL))), NilaiTertinggi(Tail(SetL)))
 
-# MahasiswaTertinggi: List of list-> list of list
+# MahasiswaTertinggi: List of list-> Student record
 # MahasiswaTertinggi(SetL, kelas) mengembalikan mahasiswa dengan nilai tertinggi di kelas tertentu
 # Realisasi
 def MahasiswaTertinggi(SetL, kelas):
