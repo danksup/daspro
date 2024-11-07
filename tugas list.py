@@ -208,6 +208,13 @@ b = SetMhs(a, MakeMhs('123', 'Caca', 'C', [90, 80, 70]))
 c = SetMhs(b, MakeMhs('234', 'Andi', 'C', []))
 e = SetMhs(c,MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]))
 
+"""
+SetMhs(SetMhs(SetMhs(SetMhs([], MakeMhs('225', 'Budi', 'B', [85, 75, 0])), 
+                     MakeMhs('123', 'Caca', 'C', [90, 80, 70])), 
+              MakeMhs('234', 'Andi', 'C', [])), 
+       MakeMhs('124', 'Thoriq', 'C', [90, 80, 33]))
+"""
+#kalau mau pemanggilan tanpa variable
 print(f"Himpunan mahasiswa : {e}")
 
 print(f"MahasiswaLulus(h) = {MahasiswaLulus(e)}")
