@@ -1,7 +1,7 @@
 # README
 ## langsung edit aja di github, atau kalau ada extension buat ngedit di vscode. 
 ```diff
-- rapiin, tambahin, benerin, hapusin tersera
+- rapiin, tambahin, benerin, hapusin terserah
 ```
 
 
