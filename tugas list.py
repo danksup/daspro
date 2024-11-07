@@ -2,72 +2,86 @@
 def MakeMhs(nim, nama, kelas, nilai):
     return [nim, nama, kelas, nilai]
 
-#set mhs
-
-#DEFINISI DAN SPESIFIKASI KONSTRUKTOR
-# Konso: elemen, List -> List
-# Konso(e, L) menghasilkan sebuah list dari e dan L dengan e sebagai elemen pertama # Realisasi
-def Konso(e,L):
+# konso: List -> List
+# Konso(e, L) menambahkan elemen e di depan list L
+# Realisasi
+def Konso(e, L):
     return [e] + L
 
-def Konslo(L2,L1):
+# konslo: List -> List
+# Konslo(L2, L1) menambahkan list L2 di depan list L1
+# Realisasi
+def Konslo(L2, L1):
     return [L2] + L1
-# Konsi: List, elemen -> List
-# Konsi(L,e) -> menghasilkan sebah list dari L dan e dengan e sebagai elemen terakhir # Realisasi
-def Konsi(L,e):
+
+# konsi: List, Elemen -> List
+# Konsi(L, e) menambahkan elemen e di akhir list L
+# Realisasi
+def Konsi(L, e):
     return L + [e]
 
-def Konsli(L1,L2):
+# konsli: List, List -> List
+# Konsli(L1, L2) menggabungkan dua list L1 dan L2 dengan L2 di akhir L1
+# Realisasi
+def Konsli(L1, L2):
     return L1 + [L2]
 
-
-# DEFINISI DAN SPESIFIKASI SELEKTOR
-# FirstElmt: List tidak kosong -> elemen
-# FirstElmt(L) Menghasilkan elemen pertama list L
+# FirstElmt: List -> Elemen
+# FirstElmt(L) mengembalikan elemen pertama dari list L
 # Realisasi
 def FirstElmt(L):
     return L[0]
 
-# LastElmt: List tidak kosong -> elemen
-# LastElmt(L): mengembalikan elemen terakhir list L
+# LastElmt: List -> Elemen
+# LastElmt(L) mengembalikan elemen terakhir dari list L
 # Realisasi
 def LastElmt(L):
     return L[-1]
 
-# Tail: List tidak kosong -> List
-# Tail(L) : Menghasilkan list tanpa elemen pertama list L, mungkin kosong
+# Tail: List -> List
+# Tail(L) mengembalikan list tanpa elemen pertama
 # Realisasi
 def Tail(L):
     return L[1:]
 
-# Head: List tidak kosong -> List
-# Head(L) : Menghasilkan list tanpa elemen terakhir list L, mungkin kosong
+# Head: List -> List
+# Head(L) mengembalikan list tanpa elemen terakhir
 # Realisasi
 def Head(L):
     return L[:-1]
 
+# get_nim: List -> String
+# get_nim(mhs) mengembalikan nim (ID mahasiswa) dari list data mahasiswa
+# Realisasi
 def get_nim(mhs):
     return mhs[0]
 
+# get_nama: List -> String
+# get_nama(mhs) mengembalikan nama mahasiswa dari list data mahasiswa
+# Realisasi
 def get_nama(mhs):
     return mhs[1]
 
+# get_kelas: List -> String
+# get_kelas(mhs) mengembalikan kelas mahasiswa dari list data mahasiswa
+# Realisasi
 def get_kelas(mhs):
     return mhs[2]
 
+# get_nilai: List -> List of integers
+# get_nilai(mhs) mengembalikan nilai mahasiswa dari list data mahasiswa
+# Realisasi
 def get_nilai(mhs):
     return mhs[3]
 
-# DEFINISI DAN SPESIFIKASI PREDIKAT
-# IsEmpty: List -> boolean
-# IsEmpty(L) benar jika list kosong
+# IsEmpty: List -> Boolean
+# IsEmpty(L) mengembalikan True jika list kosong, False jika tidak
 # Realisasi
 def IsEmpty(L):
     return L == []
 
-# DEFINISI DAN SPESIFIKASI FUNGSI YANG MENGOPERASIKAN LIST
-# NbElmt: List -> integer
-# NbElmt(L): Menghasilkan banyaknya elemen list, nol jika kosong
+# NbElmt: List -> Integer
+# NbElmt(L) mengembalikan jumlah elemen dalam list L
 # Realisasi
 def NbElmt(L):
     if IsEmpty(L):
@@ -75,39 +89,53 @@ def NbElmt(L):
     else:
         return 1 + NbElmt(Tail(L))
 
-# SumElmt: List of integer -> integer
-# SumElmt(L) menghasilkan jumlahan dari setiap elemen di list L
+# SumElmt: List of integers -> Integer
+# SumElmt(L) mengembalikan jumlah semua elemen dalam list L
+# Realisasi
 def SumElmt(L):
     if IsEmpty(L):
         return 0
     else:
         return FirstElmt(L) + SumElmt(Tail(L))
 
-# AvgElmt: List of integer -> integer 
-# AvgEmlt(L) menghasilkan nilai rata-rata
+# AvgElmt: List of integers -> Float
+# AvgElmt(L) mengembalikan rata-rata elemen dalam list L
+# Realisasi
 def AvgElmt(L):
     if IsEmpty(L):
         return 0
     else:
         return SumElmt(L) / NbElmt(L)
 
-def SetMhs(L):
-    return [L]
-
-def NewSetMhs(NewL, L):
-    return Konslo(NewL, L)
-
+# RataRataMhs: List of list -> Float
+# RataRataMhs(L) menghitung rata-rata nilai mahasiswa
+# Realisasi
 def RataRataMhs(L):
     return AvgElmt(get_nilai(L))
 
+# MaxElmt: List of integers -> Integer
+# MaxElmt(L) mengembalikan elemen terbesar dalam list L
+# Realisasi
+def MaxElmt(L):
+    if IsEmpty(L):
+        return 0
+    else:
+        return max(FirstElmt(L), MaxElmt(Tail(L)))
+
+# MahasiswaLulus: List of list -> List of list
+# MahasiswaLulus(SetL) mengembalikan list mahasiswa yang lulus (rata-rata >= 70)
+# Realisasi
 def MahasiswaLulus(SetL):
     if IsEmpty(SetL):
         return []
     elif RataRataMhs(FirstElmt(SetL)) >= 70:
-        return Konso(FirstElmt(SetL), MahasiswaLulus(Tail(SetL))) 
+        return Konso(FirstElmt(SetL), MahasiswaLulus(Tail(SetL)))
     else:
         return MahasiswaLulus(Tail(SetL))
 
+# MahasiswaTIdakMengerjakan: List of list, String -> List of list
+# MahasiswaTidakMengerjakan(SetL, kelas) mengembalikan list mahasiswa yang tidak mengerjakan tugas di kelas tertentu
+# Realisasi
 def MahasiswaTidakMengerjakan(SetL, kelas):
     if IsEmpty(SetL):
         return []
@@ -119,18 +147,18 @@ def MahasiswaTidakMengerjakan(SetL, kelas):
     else:
         return MahasiswaTidakMengerjakan(Tail(SetL), kelas)
 
-def MaxElmt(L):
-    if IsEmpty(L):
-        return 0
-    else:
-        return max(FirstElmt(L),MaxElmt(Tail(L)))
-    
+# NilaiTertinggi: List of list -> Integer
+# NilaiTertinggi(SetL) mengembalikan nilai tertinggi dari semua mahasiswa dalam list
+# Realisasi
 def NilaiTertinggi(SetL):
     if IsEmpty(SetL):
         return 0
     else:
         return max(MaxElmt(get_nilai(FirstElmt(SetL))), NilaiTertinggi(Tail(SetL)))
 
+# MahasiswaTertinggi: List of list-> Student record
+# MahasiswaTertinggi(SetL, kelas) mengembalikan mahasiswa dengan nilai tertinggi di kelas tertentu
+# Realisasi
 def MahasiswaTertinggi(SetL, kelas):
     if IsEmpty(SetL):
         return []
@@ -141,7 +169,10 @@ def MahasiswaTertinggi(SetL, kelas):
             return MahasiswaTertinggi(Tail(SetL), kelas)
     else:
         return MahasiswaTertinggi(Tail(SetL), kelas)
-    
+
+# JumlahMahasisawaTidakMengerjakan: List of list -> Integer
+# JumlahMahasiswaTidakMengerjakan(SetL) menghitung jumlah mahasiswa yang tidak mengerjakan tugas
+# Realisasi
 def JumlahMahasiswaTidakMengerjakan(SetL):
     if IsEmpty(SetL):
         return 0
@@ -150,6 +181,9 @@ def JumlahMahasiswaTidakMengerjakan(SetL):
     else:
         return JumlahMahasiswaTidakMengerjakan(Tail(SetL))
 
+# JumlahMahasiswaLulus: List of lists -> Integer
+# JumlahMahasiswaLulus(SetL) menghitung jumlah mahasiswa yang lulus
+# Realisasi
 def JumlahMahasiswaLulus(SetL):
     if IsEmpty(SetL):
         return 0
@@ -158,30 +192,32 @@ def JumlahMahasiswaLulus(SetL):
     else:
         return JumlahMahasiswaLulus(Tail(SetL))
 
+# SetMhs: List of list -> List of list
+# SetMhs(set_mhs, new_mhs) menambahkan mahasiswa baru ke dalam set mahasiswa
+# Realisasi
+def SetMhs(set_mhs, new_mhs):
+    if IsEmpty(set_mhs):
+        return [new_mhs]
+    elif get_nim(FirstElmt(set_mhs)) == get_nim(new_mhs):
+        return [FirstElmt(set_mhs)] + Tail(set_mhs)
+    else:
+        return [FirstElmt(set_mhs)] + SetMhs(Tail(set_mhs), new_mhs)
 
-a = MakeMhs('234', 'Andi', 'C', [])
-b = MakeMhs('123', 'Caca', 'C', [90, 80, 70])
-c = MakeMhs('225', 'Budi', 'B', [85, 75, 0])
-g = MakeMhs('124', 'Thoriq', 'C', [90, 80, 100])
+a = SetMhs([], MakeMhs('225', 'Budi', 'B', [85, 75, 0]))
+b = SetMhs(a, MakeMhs('123', 'Caca', 'C', [90, 80, 70]))
+c = SetMhs(b, MakeMhs('234', 'Andi', 'C', []))
+e = SetMhs(c,MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]))
 
-#print(a)
-d = SetMhs(a)
-#print(d)
-e = NewSetMhs(b,d)
-#print(e)
-f = NewSetMhs(c, e)
-h = NewSetMhs(g,f)
+print(f"Himpunan mahasiswa : {e}")
 
-print(f"Himpunan mahasiswa : {h}")
+print(f"MahasiswaLulus(h) = {MahasiswaLulus(e)}")
 
-print(f"MahasiswaLulus(h) = {MahasiswaLulus(h)}")
+print(f"MahasiswaTidakMengerjakan(h, 'C') = {MahasiswaTidakMengerjakan(e, 'C')}")
 
-print(f"MahasiswaTidakMengerjakan(h, 'C') = {MahasiswaTidakMengerjakan(h, 'C')}")
+print(f"NilaiTertinggi(h) = {NilaiTertinggi(e)}")
 
-print(f"NilaiTertinggi(h) = {NilaiTertinggi(h)}")
+print(f"MahasiswaTertinggi(h,'C') = {MahasiswaTertinggi(e,'C')}")
 
-print(f"MahasiswaTertinggi(h,'C') = {MahasiswaTertinggi(h,'C')}")
+print(f"JumlahMahasiswaTidakMengerjakan(h) = {JumlahMahasiswaTidakMengerjakan(e)}")
 
-print(f"JumlahMahasiswaTidakMengerjakan(h) = {JumlahMahasiswaTidakMengerjakan(h)}")
-
-print(f"JumlahMahasiswaLulus(h) = {JumlahMahasiswaLulus(h)}")
+print(f"JumlahMahasiswaLulus(h) = {JumlahMahasiswaLulus(e)}")
