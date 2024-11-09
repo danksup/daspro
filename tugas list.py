@@ -192,12 +192,13 @@ def JumlahMahasiswaLulus(SetL):
     else:
         return JumlahMahasiswaLulus(Tail(SetL))
 
-# SetMhs: List of list -> List of list
-# SetMhs(set_mhs, new_mhs) menambahkan mahasiswa baru ke dalam set mahasiswa
-# Realisasi
+
 def SetMhs(L):
     return [L]
     
+# NewSetMhs: List of list -> List of list
+# NewSetMhs(NewL, L) menambahkan mahasiswa baru ke dalam set mahasiswa
+# Realisasi
 def NewSetMhs(NewL, L):
     return Konslo(NewL, L)
 
