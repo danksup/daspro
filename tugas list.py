@@ -191,7 +191,10 @@ def JumlahMahasiswaLulus(SetL):
         return 1 + JumlahMahasiswaLulus(Tail(SetL))
     else:
         return JumlahMahasiswaLulus(Tail(SetL))
-    
+        
+def SetMhs(L):
+    return [L]
+
 # NewSetMhs: List of list -> List of list
 # NewSetMhs(NewL, L) menambahkan mahasiswa baru ke dalam set mahasiswa
 # Realisasi
@@ -202,11 +205,13 @@ a = MakeMhs('234', 'Andi', 'C', [])
 b = MakeMhs('123', 'Caca', 'C', [90, 80, 70])
 c = MakeMhs('225', 'Budi', 'B', [85, 75, 0])
 g = MakeMhs('124', 'Thoriq', 'C', [90, 80, 100])
+#print(a)
+d = SetMhs(a)
 #print(d)
-e = NewSetMhs(a,b)
+e = NewSetMhs(b,d)
 #print(e)
 f = NewSetMhs(c, e)
-h = NewSetMhs(f,g)
+h = NewSetMhs(g,f)
 
 print(f"Himpunan mahasiswa : {h}")
 print(f"Himpunan mahasiswa : {e}")
