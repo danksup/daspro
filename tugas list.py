@@ -2,6 +2,9 @@
 def MakeMhs(nim, nama, kelas, nilai):
     return [nim, nama, kelas, nilai]
 
+def SetMhs(L):
+    return [L]
+
 # konso: List -> List
 # Konso(e, L) menambahkan elemen e di depan list L
 # Realisasi
@@ -191,9 +194,6 @@ def JumlahMahasiswaLulus(SetL):
         return 1 + JumlahMahasiswaLulus(Tail(SetL))
     else:
         return JumlahMahasiswaLulus(Tail(SetL))
-        
-def SetMhs(L):
-    return [L]
 
 # NewSetMhs: List of list -> List of list
 # NewSetMhs(NewL, L) menambahkan mahasiswa baru ke dalam set mahasiswa
@@ -201,61 +201,33 @@ def SetMhs(L):
 def NewSetMhs(NewL, L):
     return Konslo(NewL, L)
 
-a = MakeMhs('234', 'Andi', 'C', [])
-b = MakeMhs('123', 'Caca', 'C', [90, 80, 70])
-c = MakeMhs('225', 'Budi', 'B', [85, 75, 0])
-g = MakeMhs('124', 'Thoriq', 'C', [90, 80, 100])
-#print(a)
-d = SetMhs(a)
-#print(d)
-e = NewSetMhs(b,d)
-#print(e)
-f = NewSetMhs(c, e)
-h = NewSetMhs(g,f)
+# Aplikasi
+print(f"Himpunan mahasiswa : { NewSetMhs(MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]), 
+              NewSetMhs(MakeMhs('225', 'Budi', 'B', [85, 75, 0]), 
+              NewSetMhs(MakeMhs('123', 'Caca', 'C', [90, 80, 70]), 
+              SetMhs(MakeMhs('234', 'Andi', 'C', [])))))}")
+print(f"MahasiswaLulus(h) = {MahasiswaLulus( NewSetMhs(MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]), 
+              NewSetMhs(MakeMhs('225', 'Budi', 'B', [85, 75, 0]), 
+              NewSetMhs(MakeMhs('123', 'Caca', 'C', [90, 80, 70]), 
+              SetMhs(MakeMhs('234', 'Andi', 'C', []))))))}")
+print(f"MahasiswaTidakMengerjakan(h, 'C') = {MahasiswaTidakMengerjakan( NewSetMhs(MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]), 
+              NewSetMhs(MakeMhs('225', 'Budi', 'B', [85, 75, 0]), 
+              NewSetMhs(MakeMhs('123', 'Caca', 'C', [90, 80, 70]), 
+              SetMhs(MakeMhs('234', 'Andi', 'C', []))))), 'C')}")
+print(f"NilaiTertinggi(h) = {NilaiTertinggi( NewSetMhs(MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]), 
+              NewSetMhs(MakeMhs('225', 'Budi', 'B', [85, 75, 0]), 
+              NewSetMhs(MakeMhs('123', 'Caca', 'C', [90, 80, 70]), 
+              SetMhs(MakeMhs('234', 'Andi', 'C', []))))))}")
+print(f"MahasiswaTertinggi(h, 'C') = {MahasiswaTertinggi( NewSetMhs(MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]), 
+              NewSetMhs(MakeMhs('225', 'Budi', 'B', [85, 75, 0]), 
+              NewSetMhs(MakeMhs('123', 'Caca', 'C', [90, 80, 70]), 
+              SetMhs(MakeMhs('234', 'Andi', 'C', []))))), 'C')}")
+print(f"JumlahMahasiswaTidakMengerjakan(h) = {JumlahMahasiswaTidakMengerjakan( NewSetMhs(MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]), 
+              NewSetMhs(MakeMhs('225', 'Budi', 'B', [85, 75, 0]), 
+              NewSetMhs(MakeMhs('123', 'Caca', 'C', [90, 80, 70]), 
+              SetMhs(MakeMhs('234', 'Andi', 'C', []))))))}")
+print(f"JumlahMahasiswaLulus(h) = {JumlahMahasiswaLulus( NewSetMhs(MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]), 
+              NewSetMhs(MakeMhs('225', 'Budi', 'B', [85, 75, 0]), 
+              NewSetMhs(MakeMhs('123', 'Caca', 'C', [90, 80, 70]), 
+              SetMhs(MakeMhs('234', 'Andi', 'C', []))))))}")
 
-print(f"Himpunan mahasiswa : {h}")
-print(f"Himpunan mahasiswa : {e}")
-
-print(f"MahasiswaLulus(h) = {MahasiswaLulus(h)}")
-print(f"MahasiswaLulus(h) = {MahasiswaLulus(e)}")
-
-print(f"MahasiswaTidakMengerjakan(h, 'C') = {MahasiswaTidakMengerjakan(h, 'C')}")
-print(f"MahasiswaTidakMengerjakan(h, 'C') = {MahasiswaTidakMengerjakan(e, 'C')}")
-
-print(f"NilaiTertinggi(h) = {NilaiTertinggi(h)}")
-print(f"NilaiTertinggi(h) = {NilaiTertinggi(e)}")
-
-print(f"MahasiswaTertinggi(h,'C') = {MahasiswaTertinggi(h,'C')}")
-print(f"MahasiswaTertinggi(h,'C') = {MahasiswaTertinggi(e,'C')}")
-
-print(f"JumlahMahasiswaTidakMengerjakan(h) = {JumlahMahasiswaTidakMengerjakan(h)}")
-print(f"JumlahMahasiswaTidakMengerjakan(h) = {JumlahMahasiswaTidakMengerjakan(e)}")
-
-print(f"JumlahMahasiswaLulus(h) = {JumlahMahasiswaLulus(h)}")
-print(f"JumlahMahasiswaLulus(h) = {JumlahMahasiswaLulus(e)}")
-
-# a = SetMhs([], MakeMhs('225', 'Budi', 'B', [85, 75, 0]))
-# b = SetMhs(a, MakeMhs('123', 'Caca', 'C', [90, 80, 70]))
-# c = SetMhs(b, MakeMhs('234', 'Andi', 'C', []))
-# e = SetMhs(c,MakeMhs('124', 'Thoriq', 'C', [90, 80, 100]))
-
-# """
-# SetMhs(SetMhs(SetMhs(SetMhs([], MakeMhs('225', 'Budi', 'B', [85, 75, 0])), 
-#                      MakeMhs('123', 'Caca', 'C', [90, 80, 70])), 
-#               MakeMhs('234', 'Andi', 'C', [])), 
-#        MakeMhs('124', 'Thoriq', 'C', [90, 80, 33]))
-# """
-# #kalau mau pemanggilan tanpa variable
-# print(f"Himpunan mahasiswa : {e}")
-
-# print(f"MahasiswaLulus(h) = {MahasiswaLulus(e)}")
-
-# print(f"MahasiswaTidakMengerjakan(h, 'C') = {MahasiswaTidakMengerjakan(e, 'C')}")
-
-# print(f"NilaiTertinggi(h) = {NilaiTertinggi(e)}")
-
-# print(f"MahasiswaTertinggi(h,'C') = {MahasiswaTertinggi(e,'C')}")
-
-# print(f"JumlahMahasiswaTidakMengerjakan(h) = {JumlahMahasiswaTidakMengerjakan(e)}")
-
-# print(f"JumlahMahasiswaLulus(h) = {JumlahMahasiswaLulus(e)}")
